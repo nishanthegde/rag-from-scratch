@@ -127,11 +127,14 @@ def main():
   embeddings = [embed_text(chunk) for chunk in chunks]
   store_embeddings_in_pinecone(embeddings, chunks)
 
-  question = input("Please ask a question: ")
-  similar_chunks = retrieve_similar_chunks(question)
-  prompt = construct_prompt(question, similar_chunks)
-  response = get_gpt_response(prompt)
-  print(f"Response: {response}")
+  while True:
+    question = input("Ask a question: ")
+    if question == "quit":
+      break
+    similar_chunks = retrieve_similar_chunks(question)
+    prompt = construct_prompt(question, similar_chunks)
+    response = get_gpt_response(prompt)
+    print(f"Response: {response}")
 
 
 if __name__ == '__main__':
