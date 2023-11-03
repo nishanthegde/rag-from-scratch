@@ -4,7 +4,7 @@ This is a basic implementation of a bot for Retrieval Augmented Generation (RAG)
 
 ## Authentication
 
-To use the bot you need to authenticate as an end user. You need to create API keys for OPENAI as well as the Pinecone vector database. 
+To use the bot you need to authenticate as an end user. You need to create API keys for OPENAI as well as for the Pinecone vector database. 
 
 Follow these links to get API authentication:
  - OPENAI: https://openai.com/product
