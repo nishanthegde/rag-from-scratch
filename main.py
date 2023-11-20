@@ -73,13 +73,11 @@ def retrieve_similar_chunks(question: str) -> List[str]:
   index_name = 'text-embeddings-index'
   index = pinecone.Index(index_name)
 
-  # print(embedding)
   # Adjusted for the newer Pinecone API
   results = index.query(vector=embedding, top_k=5)
 
   # Extract the IDs of the most similar chunks
   most_similar_chunk_ids = results['matches']
-  # print(most_similar_chunk_ids)
   similar_chunks = [
       get_text_from_id(chunk['id']) for chunk in most_similar_chunk_ids
   ]
@@ -95,7 +93,7 @@ def construct_prompt(question: str, similar_chunks: List[str]) -> str:
           "---------------------\n" \
           f"{formatted_chunks}\n" \
           "---------------------\n" \
-          "Given the context information only and not prior knowledge, " \
+          "Using both the context information and also using your own knowledge," \
           "answer the query.\n" \
           f"Query: {question}\n" \
           "Answer: "
@@ -135,7 +133,6 @@ def main():
     prompt = construct_prompt(question, similar_chunks)
     response = get_gpt_response(prompt)
     print(f"Response: {response}")
-  # print(embed_text('nishant')[:5])
 
 
 if __name__ == '__main__':
