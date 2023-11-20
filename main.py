@@ -95,7 +95,7 @@ def construct_prompt(question: str, similar_chunks: List[str]) -> str:
           "---------------------\n" \
           f"{formatted_chunks}\n" \
           "---------------------\n" \
-          "Given the context information and no prior knowledge, " \
+          "Given the context information only and not prior knowledge, " \
           "answer the query.\n" \
           f"Query: {question}\n" \
           "Answer: "
@@ -135,6 +135,7 @@ def main():
     prompt = construct_prompt(question, similar_chunks)
     response = get_gpt_response(prompt)
     print(f"Response: {response}")
+  # print(embed_text('nishant')[:5])
 
 
 if __name__ == '__main__':
