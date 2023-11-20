@@ -93,7 +93,7 @@ def construct_prompt(question: str, similar_chunks: List[str]) -> str:
           "---------------------\n" \
           f"{formatted_chunks}\n" \
           "---------------------\n" \
-          "Using both the context information and also using your own knowledge," \
+          "Given the context information only and not prior knowledge, " \
           "answer the query.\n" \
           f"Query: {question}\n" \
           "Answer: "
